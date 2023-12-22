@@ -23,12 +23,37 @@
         "exclude": ["node_modules"], // which files to skip
     2.  npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
     3.  npx eslint --init
-    4.  add rules: (inside eslintrc.json file)  
+    4.  add (inside eslintrc.json file)  
          "rules": {  
-        "@typescript-eslint/no-unused-vars": "error",  
-         // to enforce using type for object type definitions, can be type or interface  
-         "@typescript-eslint/consistent-type-definitions": ["error", "type"],  
-         },
-    5.  create .eslintignore file and add those files:  
+        "no-unused-vars": "error",  
+        "no-unused-expressions": "error",  
+        "prefer-const": "error",  
+        "no-console": "error",  
+        "no-undef": "error"  
+        },  
+        "globals": {  
+        "process": "readonly"  
+        }
+    5.  create .eslintignore file and add those files inside the file:  
         node_modules  
         dist
+
+12. prettier installation
+    1.  npm install --save-dev prettier
+    2.  create .prettierrc.json file and add this:  
+         {  
+        "semi": true,  
+        "singleQuote": true  
+        }
+    3.  add this into package.json file  
+        "prettier": "prettier --ignore-path .gitignore --write \"./src/\*_/_.+(js|ts|json)\""
+    4.  add this into settings.json  
+        "editor.defaultFormatter": "esbenp.prettier-vscode",  
+        "editor.formatOnSave": true,
+    5.  to avoid eslint and prettier conflict  
+        npm install --save-dev eslint-config-prettier
+    6.  add this into .eslintrc.json file  
+        "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+    7.  add this two inside package.json file  
+        "prettier:fix": "npx prettier --write src",  
+         "lint:fix": "npx eslint src --fix",
