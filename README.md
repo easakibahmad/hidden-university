@@ -57,3 +57,9 @@
     7.  add this two inside package.json file  
         "prettier:fix": "npx prettier --write src",  
          "lint:fix": "npx eslint src --fix",
+
+# project work p-1
+
+1. Inside src folder in root app.ts, server.ts & config folder created and .env file added in root,  
+   config folder includes index.ts file
+2. 
